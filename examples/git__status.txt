@@ -1,0 +1,27 @@
+On branch feature/checkout
+Your branch is ahead of 'origin/feature/checkout' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   src/checkout/cart.py
+	modified:   src/checkout/payment.py
+	new file:   src/checkout/coupon.py
+	new file:   tests/test_coupon.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/checkout/cart.py
+	modified:   src/api/routes.py
+	modified:   README.md
+	modified:   docs/checkout.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	notes/todo.md
+	scratch/experiment.py
+	scratch/bench.py
+	.env.local
+
+no changes added to commit (use "git add" and/or "git commit -a")

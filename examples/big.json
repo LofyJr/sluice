@@ -1,0 +1,44 @@
+{
+    "service": "shop-api",
+    "version": "0.3.0",
+    "routes": [
+        {
+            "method": "GET",
+            "path": "/products",
+            "auth": false,
+            "handler": "list_products",
+            "cache_ttl": 60
+        },
+        {
+            "method": "GET",
+            "path": "/products/{id}",
+            "auth": false,
+            "handler": "get_product",
+            "cache_ttl": 60
+        },
+        {
+            "method": "POST",
+            "path": "/cart",
+            "auth": true,
+            "handler": "add_to_cart",
+            "cache_ttl": 0
+        },
+        {
+            "method": "POST",
+            "path": "/checkout",
+            "auth": true,
+            "handler": "checkout",
+            "cache_ttl": 0
+        }
+    ],
+    "limits": {
+        "rps": 100,
+        "burst": 200,
+        "max_body_bytes": 1048576
+    },
+    "features": {
+        "coupons": true,
+        "international_shipping": true,
+        "guest_checkout": false
+    }
+}

@@ -1,0 +1,69 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.7, pytest-8.4.1, pluggy-1.5.0
+rootdir: /workspace/shop
+collected 42 items
+
+tests/test_auth.py::test_login PASSED
+tests/test_auth.py::test_logout PASSED
+tests/test_auth.py::test_refresh_token PASSED
+tests/test_auth.py::test_expired_token PASSED
+tests/test_auth.py::test_invalid_password PASSED
+tests/test_cart.py::test_add_item PASSED
+tests/test_cart.py::test_remove_item PASSED
+tests/test_cart.py::test_update_qty PASSED
+tests/test_cart.py::test_clear PASSED
+tests/test_cart.py::test_total_empty PASSED
+tests/test_cart.py::test_total_with_tax FAILED
+tests/test_coupon.py::test_percent_off PASSED
+tests/test_coupon.py::test_fixed_off PASSED
+tests/test_coupon.py::test_expired_coupon PASSED
+tests/test_coupon.py::test_stacking_not_allowed FAILED
+tests/test_payment.py::test_charge_ok PASSED
+tests/test_payment.py::test_charge_declined PASSED
+tests/test_payment.py::test_refund PASSED
+tests/test_payment.py::test_partial_refund PASSED
+tests/test_payment.py::test_idempotency PASSED
+tests/test_routes.py::test_get_products PASSED
+tests/test_routes.py::test_get_product PASSED
+tests/test_routes.py::test_404 PASSED
+tests/test_routes.py::test_create_order PASSED
+tests/test_routes.py::test_list_orders PASSED
+tests/test_shipping.py::test_flat_rate PASSED
+tests/test_shipping.py::test_free_over_threshold PASSED
+tests/test_shipping.py::test_international PASSED
+tests/test_shipping.py::test_no_address PASSED
+tests/test_inventory.py::test_decrement PASSED
+tests/test_inventory.py::test_oversell_blocked PASSED
+tests/test_inventory.py::test_restock PASSED
+tests/test_search.py::test_basic PASSED
+tests/test_search.py::test_filters PASSED
+tests/test_search.py::test_empty PASSED
+tests/test_users.py::test_create PASSED
+tests/test_users.py::test_update PASSED
+tests/test_users.py::test_delete PASSED
+tests/test_users.py::test_list PASSED
+tests/test_users.py::test_dup_email PASSED
+
+=================================== FAILURES ===================================
+_____________________________ test_total_with_tax _____________________________
+
+    def test_total_with_tax():
+        cart = Cart()
+        cart.add(Item("book", 10.00), qty=1)
+>       assert cart.total(tax=0.1) == 11.00
+E       assert 10.0 == 11.0
+E        +  where 10.0 = <bound method Cart.total of <Cart 1 item>>(tax=0.1)
+
+tests/test_cart.py:58: AssertionError
+________________________ test_stacking_not_allowed ____________________________
+
+    def test_stacking_not_allowed():
+        c = Coupon.percent(10)
+>       c.stack(Coupon.fixed(5))
+E       CouponError: stacking is not allowed
+
+tests/test_coupon.py:31: CouponError
+=========================== short test summary info ============================
+FAILED tests/test_cart.py::test_total_with_tax - assert 10.0 == 11.0
+FAILED tests/test_coupon.py::test_stacking_not_allowed - CouponError: stackin...
+========================= 2 failed, 40 passed in 3.14s =========================

@@ -1,0 +1,15 @@
+# Sluice runtime (recovery store + measurement log) — never commit originals
+.sluice/
+*.db
+*.db-wal
+*.db-shm
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+*.log

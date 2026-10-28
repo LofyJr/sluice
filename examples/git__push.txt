@@ -1,0 +1,13 @@
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (15/15), 2.13 KiB | 2.13 MiB/s, done.
+Total 15 (delta 9), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (9/9), completed with 8 local objects.
+remote:
+remote: Create a pull request for 'feature/checkout' on GitHub by visiting:
+remote:      https://github.com/acme/shop/pull/new/feature/checkout
+remote:
+To github.com:acme/shop.git
+   7f3a9c1..b2e4d60  feature/checkout -> feature/checkout

@@ -1,0 +1,18 @@
+src/api/routes.py:12:from .auth import require_token
+src/api/routes.py:48:    token = require_token(request)
+src/api/routes.py:91:    token = require_token(request)
+src/api/routes.py:140:    token = require_token(request)
+src/api/routes.py:203:    token = require_token(request)
+src/auth/__init__.py:3:def require_token(req):
+src/auth/__init__.py:19:    # require_token raises on missing header
+src/auth/middleware.py:7:from ..auth import require_token
+src/auth/middleware.py:33:        require_token(scope)
+src/auth/middleware.py:51:        require_token(scope)
+tests/test_auth.py:5:from src.auth import require_token
+tests/test_auth.py:22:    require_token(fake_req)
+tests/test_auth.py:40:    require_token(expired_req)
+tests/test_auth.py:58:        require_token(no_header_req)
+tests/test_routes.py:9:from src.auth import require_token
+tests/test_routes.py:66:    require_token(req)
+docs/auth.md:14:The `require_token` helper validates the Authorization header.
+docs/auth.md:52:Call `require_token` at the top of each protected handler.

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# sluice — wrapper that puts the 'sluice' package on PYTHONPATH and runs the CLI.
+set -euo pipefail
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export PYTHONPATH="${DIR}${PYTHONPATH:+:${PYTHONPATH}}"
+exec python3 -m sluice "$@"

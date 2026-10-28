@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# sluice-claude — start the Sluice proxy (if needed) and open Claude Code wired to it.
+# Usage / Uso: ./bin/sluice-claude
+set -uo pipefail
+
+PORT="${SLUICE_PORT:-8799}"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LOGDIR="${DIR}/.sluice"
+mkdir -p "${LOGDIR}"
+
+health() { curl -s "http://127.0.0.1:${PORT}/__sluice__/health" >/dev/null 2>&1; }
+
+echo "=== Sluice -> Claude Code ==="
+
+if health; then
+  echo "[1/3] Proxy already running on port ${PORT}."
+else
+  echo "[1/3] Starting Sluice proxy on port ${PORT}..."
+  nohup "${DIR}/bin/sluice" proxy --port "${PORT}" > "${LOGDIR}/proxy.log" 2>&1 &
+  for _ in $(seq 1 20); do health && break; sleep 0.5; done
+  if health; then
+    echo "      Proxy up. (log: ${LOGDIR}/proxy.log)"
+  else
+    echo "      ERROR: could not start the proxy. See ${LOGDIR}/proxy.log"
+    exit 1
+  fi
+fi
+
+export ANTHROPIC_BASE_URL="http://127.0.0.1:${PORT}"
+echo "[2/3] Claude Code will talk to Sluice at ${ANTHROPIC_BASE_URL}"
+
+if ! command -v claude >/dev/null 2>&1; then
+  echo "[3/3] Claude Code ('claude') is not installed."
+  echo "      Install it (e.g. 'npm install -g @anthropic-ai/claude-code') and re-run."
+  exit 1
+fi
+
+echo "[3/3] Opening Claude Code... (use it normally; Sluice works underneath)"
+exec claude "$@"

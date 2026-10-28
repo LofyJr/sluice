@@ -1,0 +1,38 @@
+   Compiling proc-macro2 v1.0.86
+   Compiling unicode-ident v1.0.12
+   Compiling libc v0.2.155
+   Compiling cfg-if v1.0.0
+   Compiling autocfg v1.3.0
+   Compiling quote v1.0.36
+   Compiling syn v2.0.72
+   Compiling version_check v0.9.5
+   Compiling memchr v2.7.4
+   Compiling serde v1.0.204
+   Compiling serde_derive v1.0.204
+   Compiling thiserror v1.0.63
+   Compiling once_cell v1.19.0
+   Compiling bytes v1.6.1
+   Compiling pin-project-lite v0.2.14
+   Compiling futures-core v0.3.30
+   Compiling tokio v1.39.2
+   Compiling hyper v1.4.1
+   Compiling tower v0.4.13
+   Compiling axum v0.7.5
+warning: unused variable: `req`
+  --> src/handlers/health.rs:12:18
+   |
+12 | async fn health(req: Request) -> impl IntoResponse {
+   |                  ^^^ help: if this is intentional, prefix it with an underscore: `_req`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: function `legacy_route` is never used
+  --> src/routes.rs:88:4
+   |
+88 | fn legacy_route() -> Router {
+   |    ^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+   Compiling shop-api v0.3.0 (/workspace/shop-api)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 18.42s

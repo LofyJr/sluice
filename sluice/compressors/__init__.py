@@ -1,0 +1,1 @@
+"""Compressores por formato/comando."""
