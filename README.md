@@ -170,7 +170,7 @@ python3 tools/ab_validate.py     # A/B: same payload, with vs without the tunnel
 
 ## License
 
-MIT recommended. No `LICENSE` file is included yet — add one before publishing.
+Released under the [MIT License](LICENSE).
 
 ---
 
@@ -341,4 +341,4 @@ python3 tools/ab_validate.py     # A/B: mesmo payload, com e sem o túnel
 
 ## Licença
 
-MIT recomendada. Ainda não há arquivo `LICENSE` — adicione um antes de publicar.
+Distribuído sob a [Licença MIT](LICENSE).
